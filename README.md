@@ -20,8 +20,10 @@ sudo apt install bc bison flex libssl-dev make libc6-dev libncurses5-dev
 ```
 Create the Bootable SD Card
 Insert the SD card and find its device name:
-
+```bash
 lsblk
+'''
+
 In this case, the device name is sdb and it already has two partitions sdb1 and sdb2.
 
 Deleting existing partitions, just to be sure:
