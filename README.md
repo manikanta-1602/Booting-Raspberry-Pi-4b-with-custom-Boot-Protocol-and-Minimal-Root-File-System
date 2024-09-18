@@ -192,13 +192,15 @@ Companion tools :
 The OS version is to be noticed. The OS is linux-4.20.8 meaning binaries compiled by the toolchain will run on any kernel version >=4.20.8
 
 Selecting aarch64-rpi3-linux-gnu as a base-line configuration:
-
+```bash
 ct-ng aarch64-rpi3-linux-gnu
+```
 Customization for Rpi4:
 
 Open menuconfig:
-
+```bash
 ct-ng menuconfig
+```
 Three changes are to be made:
 
 Paths and misc options -> Render the toolchain read-only -> false
@@ -213,16 +215,19 @@ Building the toolchain
 Before building the toolchain, it is to be made sure that gcc version is 8 and g++ version is 8. Otherwise error will arise while building the toolchain in binutils step.
 
 If the host system is Ubuntu 20.04 or lower, it is possible to downgrade the gcc and g++ version easily:
-
+```bash
 sudo apt-get install -y gcc-8 g++-8
+```
 Set gcc 8 as default:
-
+```bash
 sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-8 80
 sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-8 80
+```
 Verify the Installation:
-
+```bash
 gcc --version
 g++ --version
+```
 If the host system is Ubuntu 22.04 (or higher):
 
 The gcc-8 package has been discontinued in Ubuntu 22.04 and later repositories, but there is a workaround.
