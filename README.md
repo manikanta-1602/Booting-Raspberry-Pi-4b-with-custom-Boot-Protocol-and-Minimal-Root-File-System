@@ -235,12 +235,17 @@ The gcc-8 package has been discontinued in Ubuntu 22.04 and later repositories, 
 Workaround for Ubuntu 22.04 or higher
 
 Install isl-0.20 and libexpat and other tools:
-
+```bash
 wget https://libisl.sourceforge.io/isl-0.20.tar.gz
 mv isl-0.20.tar.gz /home/sprak/crosstool-ng/.build/tarballs/
+```
+```bash
 wget https://github.com/libexpat/libexpat/releases/download/R_2_2_6/expat-2.2.6.tar.bz2
 mv expat-2.2.6.tar.bz2 /home/surya/crosstool-ng/.build/tarballs/
+```
+```bash
 sudo apt-get install -y python3-dev
+```
 Finally, build the configured crosstool-ng:
 
  ```bash
@@ -252,15 +257,18 @@ Because bootloader is device specific, it is to be configured before building li
 Here, U-boot is used for the proprietory ROM code.
 
 Clone U-Boot repository:
-
+```bash
 git clone git://git.denx.de/u-boot.git 
 cd u-boot
 git checkout v2021.10 -b v2021.10
+```
 Configure U-Boot:
-
+```bash
 export PATH=${HOME}/x-tools/aarch64-rpi4-linux-gnu/bin/:$PATH
 export CROSS_COMPILE=aarch64-rpi4-linux-gnu-
 make rpi_4_defconfig
+```
 Build U-boot:
-
+```bash
 make
+```
