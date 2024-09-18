@@ -22,12 +22,12 @@ Create the Bootable SD Card
 Insert the SD card and find its device name:
 ```bash
 lsblk
-'''
+```
 
 In this case, the device name is sdb and it already has two partitions sdb1 and sdb2.
 
 Deleting existing partitions, just to be sure:
-
+```bash
 $ sudo fdisk /dev/sdb
 
 Welcome to fdisk (util-linux 2.34).
@@ -57,8 +57,9 @@ Command (m for help): w
 The partition table has been altered.
 Calling ioctl() to re-read partition table.
 Syncing disks.
-Add two partitions:
-
+```
+2 Add two partitions:
+```bash
 Create a 100MB primary partition of type W95 FAT32 (LBA)
 Create another primary partition with the remaining space of type Linux
 $ sudo fdisk /dev/sdb
@@ -127,17 +128,20 @@ Command (m for help): w
 The partition table has been altered.
 Calling ioctl() to re-read partition table.
 Syncing disks.
+```
 Fromat the partitions:
-
+```bash
 # FAT32 for boot partition
 $ sudo mkfs.vfat -F 32 -n boot /dev/sdb1
 
 # ext4 for root partition
 $ sudo mkfs.ext4 -L root /dev/sdb2
+```
 Mount the partitions:
-
+```bash
 sudo mount /dev/sdb1 /mnt/boot
 sudo mount /dev/sdb2 /mnt/root
+```
 Create the Toolchain
 The toolchain will consist of:
 
@@ -147,30 +151,34 @@ some runtime libraries
 Toolchain is built using toolchain generator called crosstool-ng.
 
 Download crosstool-ng source:
-
+```bash
 git clone https://github.com/crosstool-ng/crosstool-ng
 cd crosstool-ng/
 # Switching to 1.24.0 version is necessary. This is because the RPi fork of the Linux Kernel always trails behind the original Linux Kernel, but it is more stable. The kernel version must be higher than the kernel version configured for the toolchain.
 git checkout crosstool-ng-1.24.0 -b 1.24.0
+```
 Build and install crosstool-ng
-
+```bash
 ./bootstrap
 ./configure --prefix=${PWD} 
 make 
 make install
 export PATH="${PWD}/bin:${PATH}"
+```
 Configure crosstool-ng
 
 By default, crosstool-ng comes with a few ready-to-use-configurations. You can see the full list by typing
-
+```bash
 ct-ng list-samples
+```
 For this version of crosstool-ng, there are no configurations for Rpi4. So an existing configuration for rpi3 is used and is modified to match Rpi4.
 
 The one from the list that is closest to the target is aarch64-rpi3-linux-gnu This command is run to get the details of this configuration:
-
+```bash
 ct-ng show-aarch64-rpi3-linux-gnu
+```
 Output:
-
+```bash
 [L...]   aarch64-rpi3-linux-gnu
 Languages       : C,C++
 OS              : linux-4.20.8
@@ -180,6 +188,7 @@ C library       : glibc-2.29
 Debug tools     : gdb-8.2.1
 Companion libs  : expat-2.2.6 gettext-0.19.8.1 gmp-6.1.2 isl-0.20 libiconv-1.15 mpc-1.1.0 mpfr-4.0.2 ncurses-6.1 zlib-1.2.11
 Companion tools :
+```
 The OS version is to be noticed. The OS is linux-4.20.8 meaning binaries compiled by the toolchain will run on any kernel version >=4.20.8
 
 Selecting aarch64-rpi3-linux-gnu as a base-line configuration:
