@@ -1,17 +1,31 @@
 # Booting-Raspberry-Pi-4b-with-custom-Boot-Protocol-and-Minimal-Root-File-System
+
 Table of Contents
+
 Hardware Requirements
+
 Preparation
+
 Create the Bootable SD Card
+
 Create the Toolchain
+
 Build the Bootloader
+
 Build the Kernel
+
 Build the Root Filesystem
+
 Preparing the Root Partition
+
 Boot
+
 Hardware Requirements
+
 A Linux Desktop machine running Ubuntu to act as a host to cross compile source code.
+
 SD card and reader.
+
 Preparation
 Install required dependencies: 
 
