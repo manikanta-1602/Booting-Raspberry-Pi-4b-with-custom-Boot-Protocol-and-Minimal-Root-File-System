@@ -164,15 +164,20 @@ sudo apt install autoconf
 sudo apt install texinfo
 sudo apt install help2man
 sudo apt install gawk
-sudo apt full-upgrade
-sudo apt install libtool
-sudo apt-mark showhold
+
 
 ```
 ```bash
 ./bootstrap
 ./configure --prefix=${PWD} 
-make 
+make
+```
+```bash
+sudo apt full-upgrade
+sudo apt install libtool
+sudo apt-mark showhold
+```
+```bash
 make install
 export PATH="${PWD}/bin:${PATH}"
 ```
