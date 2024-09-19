@@ -159,6 +159,17 @@ git checkout crosstool-ng-1.24.0 -b 1.24.0
 ```
 Build and install crosstool-ng
 ```bash
+sudo apt install thunderbird
+sudo apt install autoconf
+sudo apt install texinfo
+sudo apt install help2man
+sudo apt install gawk
+sudo apt full-upgrade
+sudo apt install libtool
+sudo apt-mark showhold
+
+```
+```bash
 ./bootstrap
 ./configure --prefix=${PWD} 
 make 
