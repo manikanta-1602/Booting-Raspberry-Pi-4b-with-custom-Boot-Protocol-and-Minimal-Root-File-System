@@ -12,13 +12,8 @@ Create the Toolchain
 
 Build the Bootloader
 
-Build the Kernel
 
-Build the Root Filesystem
 
-Preparing the Root Partition
-
-Boot
 
 Hardware Requirements
 
