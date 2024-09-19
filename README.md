@@ -15,11 +15,11 @@ Build the Bootloader
 
 
 
-Hardware Requirements
+##Hardware Requirements
 
-A Linux Desktop machine running Ubuntu to act as a host to cross compile source code.
+1.A Linux Desktop machine running Ubuntu to act as a host to cross compile source code.
 
-SD card and reader.
+2.SD card and reader.
 
 Preparation
 Install required dependencies: 
